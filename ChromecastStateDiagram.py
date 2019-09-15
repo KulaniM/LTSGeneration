@@ -2,14 +2,14 @@ from builtins import print
 from transitions import State
 from transitions.extensions import GraphMachine as Machine
 
-
+#TODO
 # Chromecast system
 #PIL0 = []
 PIL1 = ['1','SD, CP, wifi0', 'msg=(ChromecastWiFiBeacon,SSID,BSSID)', 'ACSeq=<(SD,send,{msg}),(CP,receive, {msg})>', 'ch=wifi0', 'rLC=-', 'BR={1}']
 PIL2 = ['2', 'CP, SD, wifi0', 'msg=(SSID, OpenSystemAuthenticationRequest)', 'ACSeq =<(CP,send,{msg}),(SD,receive, {msg})>', 'ch=wifi0', 'rLC=-', 'BR={-}']
 PIL3 = ['3', 'SD,CP,wifi0', 'msg=(AssociationResponse)', 'ACSeq =<(SD,send,{msg}),(CP,receive, {msg})>', 'ch=wifi0', 'rLC=-', 'BR={6,8,10,12,16}']
 PIL4 = ['4','CP,SD,openwifi','msg=(GetEurekaInfo,SignRParam,VersionRParam,NameRParam,SetupStateRParam,EthernetConnectedRParam,IPaddressRParam,SsdpUdnRParam,Model NameRParam,DeviceCapabilitiesRParam,SSIDSuffixRParam,TosAcceptedRP aram,PublicKeyRParam,BSSIDRParam,x)', 'ACSeq=<(CP,newnonce,{x}), (CP,send,{msg}), (SD,receive, {msg})>', 'ch=openwifi', 'rLC=-', 'BR={-}']
-PIL5 = ['5', 'SD,CP,openwifi', 'msg=(Version,Name,SetupState,EthernetConnected,IPaddress,SsdpUdn,ModelName,DeviceCapabilities,SSIDSuffix,TosAccepted,BSSID,PublickKey,Certificate, IntermediateCerts,SignedData,x}', 'ACSeq=<(SD,send,{msg}),(CP,receive,{msg})>', 'ch=openwifi', 'rLC=-', 'BR={4}']
+PIL5 = ['5', 'SD,CP,openwifi', 'msg=(Version,Name,SetupState,EthernetConnected,IPaddress,SsdpUdn,ModelName,DeviceCapabilities,SSIDSuffix,TosAccepted,BSSID,PublickKey,Certificate, IntermediateCerts,SignedData,x)', 'ACSeq=<(SD,send,{msg}),(CP,receive,{msg})>', 'ch=openwifi', 'rLC=-', 'BR={4}']
 PIL6 = ['6', 'CP,SD,openwifi', 'msg=(PostScanWifi)', 'ACSeq=<(CP,send,{msg}),(SD,receive,{msg}),(SD, executeCommand, {msg})>', 'ch=openwifi', 'rLC=-', 'BR={-}' ]
 PIL7 = ['7','SD,CP,openwifi','msg=(SuccessScanRequest)', 'ACSeq=<(SD,send,{msg}),(CP,receive, {msg})>', 'ch=wifi', 'rLC=-', 'BR={6}']
 PIL8 = ['8', 'CP,SD,openwifi', 'msg=(GetScanResults)', 'ACSeq=<(CP,send,{msg}),(SD,receive, {msg})>','ch=openwifi', 'rLC=-', 'BR={-}']
@@ -37,11 +37,13 @@ PIL29 = ['29', 'CP, GS,wifi', 'msg=(PostBindRequest,association(ScreenID),Device
 PIL30 = ['30', 'GS, CP,wifi', 'msg=(CurrentVideoID,SID,GsessionID,LoungStatus,PlaylistModified, OnAutoplayModeChanged,OnPlaylistModeChanged)', 'ACSeq =<(GS,send,{msg}),(CP,receive,{msg})>', 'ch=wifi', 'rLC=-', 'BR={29}']
 
 
-
+#TODO
 PIL  = [PIL1, PIL2, PIL3, PIL4, PIL5,PIL6,PIL7, PIL8,PIL9,PIL10,PIL11,PIL12,PIL13,PIL14,PIL15,PIL16,PIL17,PIL18,PIL19,PIL20,PIL21,PIL22,PIL23,PIL24,PIL25,PIL26,PIL27,PIL28,PIL29,PIL30]
+#TODO
 #set tge size the PIL list
 PIL_size = 30
 
+#TODO
 
 # LTS0
 class SD(object):
@@ -60,7 +62,7 @@ class GS(object):
 
 sd = None
 cp = None
-
+#TODO
 # list of participants in the smart home system
 participants = ['SD', 'CP', 'GS']
 
@@ -72,7 +74,7 @@ branch_dest = {}
 branch_small_label = {}
 
 # track the message content to use existing state as destination ex. success all joins together
-
+#TODO
 # state machines
 sd = SD()  # initialize the SD model
 sdMachine1 = Machine(sd)
@@ -90,7 +92,7 @@ for p in participants:
     source[p] = smachines[p][1] + str(smachines[p][2])
     smachines[p][0].add_states(State(source[p]))
     dest[p] = 'null'
-
+#TODO
 # track the source state of a branch each participant
 branch_source_values = []
 branch_source_values2 = []
@@ -113,18 +115,18 @@ while i <= PIL_size:
     branch_label_values2.append('')
     branch_label_values3.append('')
     i += 1
-
+#TODO
 # for p in participants:
 branch_source['SD'] = branch_source_values
 branch_source['CP'] = branch_source_values2
 branch_source['GS'] = branch_source_values3
-
+#TODO
 # for p in participants:
 #     branch_dest[p] = []
 branch_dest['SD'] = branch_dest_values
 branch_dest['CP'] = branch_dest_values2
 branch_dest['GS'] = branch_dest_values3
-
+#TODO
 branch_small_label['SD'] = branch_label_values
 branch_small_label['CP'] = branch_label_values2
 branch_small_label['GS'] = branch_label_values3
